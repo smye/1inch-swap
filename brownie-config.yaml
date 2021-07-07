@@ -26,7 +26,6 @@ networks:
     amount: 100000000000000000000 # 100
     slippage: 5
     chain_id: 137
-    me: "0x8510b10A9097B810c99E516e36afd0F2D4d9F61d"
   polygon-fork:
     router: "0x11111112542D85B3EF69AE05771c2dCCff4fAa26"
     tokenIn: "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
@@ -34,6 +33,5 @@ networks:
     amount: 100000000000000000000
     slippage: 5
     chain_id: 137
-    me: "0x7b5000af8ab69fd59eb0d4f5762bff57c9c04385"
 wallets:
   from_key: ${PRIVATE_KEY}

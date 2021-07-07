@@ -33,7 +33,6 @@ def main():
     amount = active_network['amount']
     slippage = active_network['slippage']
     chain_id = active_network['chain_id']
-    me = active_network['me']
 
     swap_req = requests.get(
         f'https://api.1inch.exchange/v3.0/{chain_id}/swap?fromTokenAddress={token_in}&toTokenAddress={token_out}&amount={amount}&fromAddress={swap_proxy}&slippage={slippage}&destReceiver={acc}&disableEstimate=true'
