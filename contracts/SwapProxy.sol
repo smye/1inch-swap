@@ -25,11 +25,10 @@ contract SwapProxy is Ownable {
     }
 
     function swap(uint minOut, bytes calldata _data) external onlyOwner {
-        (address _e, SwapDescription memory desc, bytes memory _d) = abi.decode(_data[4:], (address, SwapDescription, bytes));
+        (address _c, SwapDescription memory desc, bytes memory _d) = abi.decode(_data[4:], (address, SwapDescription, bytes));
 
         IERC20(desc.srcToken).transferFrom(msg.sender, address(this), desc.amount);
         IERC20(desc.srcToken).approve(AGGREGATION_ROUTER_V3, desc.amount);
-
 
         (bool succ, bytes memory _data) = address(AGGREGATION_ROUTER_V3).call(_data);
         if (succ) {
@@ -39,5 +38,4 @@ contract SwapProxy is Ownable {
             revert();
         }
     }
-    
 }
