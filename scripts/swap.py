@@ -39,7 +39,6 @@ def main():
         f'https://api.1inch.exchange/v3.0/{chain_id}/swap?fromTokenAddress={token_in}&toTokenAddress={token_out}&amount={amount}&fromAddress={swap_proxy}&slippage={slippage}&destReceiver={acc}&disableEstimate=true'
     ).json()
 
-    print(swap_req)
 
     swap_data = swap_req['tx']['data']
     min_out = int(swap_req['toTokenAmount']) * (100-slippage)/100
