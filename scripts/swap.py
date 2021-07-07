@@ -42,9 +42,7 @@ def main():
     swap_data = swap_req['tx']['data']
     min_out = int(swap_req['toTokenAmount']) * (100-slippage)/100
 
-    print(min_out / 10**18)
     confirm = input(f"Quote: {amount / 10**token_in.decimals()} {token_in.symbol()} -> {min_out / 10**token_out.decimals()} {token_out.symbol()} (MINIMUM RECEIVED) (y/n)")
-
     if confirm.lower() != 'y':
         min_out = float(input('Minimum received (e.g 500e18): '))
 
