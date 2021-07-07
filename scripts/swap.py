@@ -22,7 +22,7 @@ def main():
     print('Getting ProxySwap contract...')
 
     try:
-        swap_proxy = SwapProxy[len(SwapProxy) - 1]  # Get the latest FlashSell contract deployed
+        swap_proxy = SwapProxy[len(SwapProxy) - 1]  # Get the latest SwapProxy contract deployed
     except IndexError:
         swap_proxy_addr = input('SwapProxy address: ')
         swap_proxy = SwapProxy.at(swap_proxy_addr)
@@ -34,16 +34,6 @@ def main():
     slippage = active_network['slippage']
     chain_id = active_network['chain_id']
     me = active_network['me']
-
-
-    quote_req = requests.get(
-        f'https://api.1inch.exchange/v3.0/{chain_id}/quote?fromTokenAddress={token_in}&toTokenAddress={token_out}&amount={amount}'
-    ).json()
-
-    estimated_gas = int(quote_req['estimatedGas'])
-    print(f'Estimated gas: {estimated_gas}')
-
-
 
     swap_req = requests.get(
         f'https://api.1inch.exchange/v3.0/{chain_id}/swap?fromTokenAddress={token_in}&toTokenAddress={token_out}&amount={amount}&fromAddress={swap_proxy}&slippage={slippage}&destReceiver={acc}&disableEstimate=true'
@@ -66,7 +56,7 @@ def main():
     print(f'Token [IN] balance before Swap: {token_in.balanceOf(acc)}')
     print(f'Token [OUT] balance before Swap: {token_out.balanceOf(acc)}')
 
-    swap_proxy.swap(min_out, swap_data, {'from': acc, 'gas_limit': estimated_gas})
+    swap_proxy.swap(min_out, swap_data, {'from': acc})
     
     print(f'Token [IN] balance after Swap: {token_in.balanceOf(acc)}')
     print(f'Token [OUT] balance after Swap: {token_out.balanceOf(acc)}')

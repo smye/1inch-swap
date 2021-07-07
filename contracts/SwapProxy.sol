@@ -7,9 +7,6 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract SwapProxy is Ownable {
 
-    event Number(uint num);
-    event Address(address addr);
-
     struct SwapDescription {
         IERC20 srcToken;
         IERC20 dstToken;
@@ -33,9 +30,6 @@ contract SwapProxy is Ownable {
         IERC20(desc.srcToken).transferFrom(msg.sender, address(this), desc.amount);
         IERC20(desc.srcToken).approve(AGGREGATION_ROUTER_V3, desc.amount);
 
-        emit Address(address(desc.srcToken));
-        emit Number(desc.amount);
-        emit Number(desc.minReturnAmount);
 
         (bool succ, bytes memory _data) = address(AGGREGATION_ROUTER_V3).call(_data);
         if (succ) {
@@ -45,6 +39,5 @@ contract SwapProxy is Ownable {
             revert();
         }
     }
-
-
+    
 }
