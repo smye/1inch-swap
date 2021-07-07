@@ -22,10 +22,10 @@ pip install -r requirements.txt
     ```bash
     brownie pm install OpenZeppelin/openzeppelin-contracts@4.1.0
     ```
-
+    
 - To add a `live` network to `Brownie`
     ```bash
-    brownie networks add Ethereum polygon host=https://matic-mainnet.chainstacklabs.com  chainid=56 explorer=https://api.polygonscan.com/api
+    brownie networks add Ethereum polygon host=https://matic-mainnet.chainstacklabs.com  chainid=137 explorer=https://api.polygonscan.com/api
     ```
 
 - For a `development` network 
