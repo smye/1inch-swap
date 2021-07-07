@@ -3,11 +3,10 @@
 A minimal example showing how to integrate 1inch in your smart contract
 
 ## Dependencies
-- python3
-- ganache-cli
+- [python3](https://www.python.org/)
+- [ganache-cli](https://github.com/trufflesuite/ganache-cli)
 
 ## Installation
----
 
 ```bash
 git clone https://github.com/smye/1inch-swap.git
@@ -19,17 +18,15 @@ pip install -r requirements.txt
 
 
 ## Usage
----
 
-- Add a network using `Brownie`
-    - For a `live` network
-        ```bash
-        brownie networks add Ethereum polygon host=https://matic-mainnet.chainstacklabs.com  chainid=56 explorer=https://api.polygonscan.com/api
-         ```
-    - For a `development` network 
-        ```bash
-        brownie networks add Development polygon-fork host=http://127.0.0.1 cmd=ganache-cli fork=https://matic-mainnet.chainstacklabs.com port=8545
-        ```
+- To add a `live` network to `Brownie`
+    ```bash
+    brownie networks add Ethereum polygon host=https://matic-mainnet.chainstacklabs.com  chainid=56 explorer=https://api.polygonscan.com/api
+    ```
+- For a `development` network 
+    ```bash
+    brownie networks add Development polygon-fork host=http://127.0.0.1 cmd=ganache-cli fork=https://matic-mainnet.chainstacklabs.com port=8545
+    ```
 - Modify the `brownie-config.yaml`
     - router: Address of the 1inch router 
     - tokenIn: Input token
@@ -42,21 +39,20 @@ pip install -r requirements.txt
     ```bash
     export PRIVATE_KEY=0x....
     ```
-        
-- Run the script
-    
-    - To deploy the `SwapProxy` contract on a `mainnet-fork`
-        ```bash
-        brownie run deploy_swap.py --network polygon-fork --interactive
-        ```
-    - To execute a `swap` on an already deployed `SwapProxy` contract on a `mainnet-fork`
-        ```bash
-        brownie run swap.py --network polygon-fork --interactive
-        ```
-    - Deploying on `mainnet` is exactly the same, but replace `polygon-fork` with `polygon`
+   
+- To deploy the `SwapProxy` contract on a `mainnet-fork`
+    ```bash
+    brownie run deploy_swap.py --network polygon-fork --interactive
+    ```
+- To execute a `swap` on an already deployed `SwapProxy` contract on a `mainnet-fork`
+    ```bash
+    brownie run swap.py --network polygon-fork --interactive
+    ```
 
 ## Notes
----
+
+- Deploying on `mainnet` is exactly the same, but replace `polygon-fork` with `polygon`
+
 - By default the account used in a forked environment is defined in the `get_acc()` function in `swap.py`
 
 - The slippage protection (`minOut`) isn't strictly required in the contract as it is provided in the `swap_req["tx"]["data"]` value returned by the 1inch API, however, it is an additional fallsafe
