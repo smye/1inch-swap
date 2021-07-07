@@ -2,6 +2,8 @@
 
 A minimal example showing how to integrate 1inch with your smart contract
 
+![image](https://user-images.githubusercontent.com/17861005/124692865-452ee180-ded6-11eb-9cab-3edc36171b04.png)
+
 ## Dependencies
 - [python3](https://www.python.org/)
 - [ganache-cli](https://github.com/trufflesuite/ganache-cli)
