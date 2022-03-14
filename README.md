@@ -1,3 +1,6 @@
+You can see detail repo info in this [link](https://github.com/smye/1inch-swap/issues/4)
+
+
 # 1inch ProxySwap
 
 A minimal example showing how to integrate 1inch with your smart contract
@@ -65,3 +68,10 @@ pip install -r requirements.txt
 - By default the account used in a forked environment is defined in the `get_acc()` function in `swap.py`
 
 - The slippage protection (`minOut`) isn't strictly required in the contract as it is provided in the `swap_req["tx"]["data"]` value returned by the 1inch API, however, it is an additional failsafe
+
+
+
+![Screen Shot 2022-02-06 at 3 59 55 PM](https://user-images.githubusercontent.com/44861205/152670819-f6966f34-c2c1-40ce-b1f8-d600b933b9b7.png)
+![Screen Shot 2022-02-06 at 4 00 18 PM](https://user-images.githubusercontent.com/44861205/152670827-61091959-aa31-4e88-b1d6-6e520260b757.png)
+
+
